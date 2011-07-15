@@ -7,9 +7,12 @@ namespace MonadTrial
 {
     public class MaybeNatSample
     {
-        public static Just<int> tryAdd(int a, int b)
+        public static Maybe<int> tryAdd(int a, int b)
         {
-            return new Just<int>(a + b);
+            if (a < 0)
+                return new Nothing<int>();
+            else
+                return new Just<int>(a + b);
         }
     }
 }

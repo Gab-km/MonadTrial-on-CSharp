@@ -5,15 +5,20 @@ using System.Text;
 
 namespace MonadTrial
 {
-    public class Just<T>
+    public class Maybe<T>
     {
-        private int p;
+        public object Value { get; set; }
+    }
 
+    public class Just<T> : Maybe<T>
+    {
         public Just(int a)
         {
             this.Value = a;
         }
+    }
 
-        public object Value { get; set; }
+    public class Nothing<T> : Maybe<T>
+    {
     }
 }

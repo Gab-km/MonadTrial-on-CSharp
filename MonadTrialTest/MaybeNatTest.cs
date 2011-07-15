@@ -26,5 +26,12 @@ namespace MonadTrialTest
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
             Assert.That(result.Value, Is.EqualTo(expected.Value));
         }
+
+        [Test]
+        public void tryAddの引数にminus1と4を与えたらNothingが返ってくること()
+        {
+            var result = MaybeNatSample.tryAdd(-1, 4);
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
+        }
     }
 }
