@@ -16,5 +16,10 @@ namespace MonadTrial
             else
                 return new Just<int>(a + b);
         }
+
+        public static Maybe<int> doMaybeNest(int p, int p_2)
+        {
+            return new Just<int>(3);
+        }
     }
 }
