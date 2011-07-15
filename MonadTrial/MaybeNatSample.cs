@@ -19,7 +19,17 @@ namespace MonadTrial
 
         public static Maybe<int> doMaybeNest(int a, int b)
         {
-            return new Just<int>(a + b);
+            return Maybe<int>.Bind(maybe(a), (x) =>
+                    Maybe<int>.Bind(maybe(b), (y) =>
+                        Maybe<int>.Return(x + y)));
+        }
+
+        private static Maybe<int> maybe(int x)
+        {
+            if (x < 0)
+                return new Nothing<int>();
+            else
+                return new Just<int>(x);
         }
     }
 }

@@ -55,11 +55,11 @@ namespace MonadTrialTest
             Assert.That(result.Value, Is.EqualTo(7));
         }
 
-        //[Test]
-        //public void doMaybeNestの引数にminus1と4を与えたらNothingが返ってくること()
-        //{
-        //    var result = MaybeNatSample.doMaybeNest(-1, 4);
-        //    Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
-        //}
+        [Test]
+        public void doMaybeNestの引数にminus1と4を与えたらNothingが返ってくること()
+        {
+            var result = MaybeNatSample.doMaybeNest(-1, 4);
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
+        }
     }
 }

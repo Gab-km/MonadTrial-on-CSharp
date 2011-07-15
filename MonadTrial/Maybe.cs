@@ -16,7 +16,10 @@ namespace MonadTrial
 
         public static Maybe<B> Bind<A, B>(Maybe<A> ma, Func<A, Maybe<B>> amb)
         {
-            return amb(ma.Value);
+            if (ma.GetType() == typeof(Nothing<A>))
+                return new Nothing<B>();
+            else
+                return amb(ma.Value);
         }
     }
 
