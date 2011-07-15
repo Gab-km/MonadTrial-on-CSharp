@@ -17,9 +17,9 @@ namespace MonadTrial
                 return new Just<int>(a + b);
         }
 
-        public static Maybe<int> doMaybeNest(int p, int p_2)
+        public static Maybe<int> doMaybeNest(int a, int b)
         {
-            return new Just<int>(3);
+            return new Just<int>(a + b);
         }
     }
 }

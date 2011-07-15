@@ -49,5 +49,13 @@ namespace MonadTrialTest
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
             Assert.That(result.Value, Is.EqualTo(expected.Value));
         }
+
+        [Test]
+        public void doMaybeNestの引数に3と4を与えたらJust7が返ってくること()
+        {
+            var result = MaybeNatSample.doMaybeNest(3, 4);
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
+            Assert.That(result.Value, Is.EqualTo(7));
+        }
     }
 }
