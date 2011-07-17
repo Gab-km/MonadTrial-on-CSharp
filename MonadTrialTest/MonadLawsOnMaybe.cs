@@ -95,5 +95,27 @@ namespace MonadTrialTest
             Assert.That(lefthand.GetType(), Is.EqualTo(righthand.GetType()));
             Assert.That(lefthand.Value, Is.EqualTo(righthand.Value));
         }
+
+        [Test]
+        public void MaybeInt_NothingがMonad則その1を満たすこと()
+        {
+            // return x >>= f === f x
+            Func<int, Maybe<int>> f = (x) =>
+            {
+                if (x < 0)
+                {
+                    return new Nothing<int>();
+                }
+                else
+                {
+                    return new Just<int>(x * 2);
+                }
+            };
+            var value = -1;
+            var lefthand = Maybe<int>.Bind(Maybe<int>.Return(value), f);
+            var righthand = f(value);
+            Assert.That(lefthand.GetType(), Is.EqualTo(righthand.GetType()));
+            Assert.That(lefthand.Value, Is.EqualTo(righthand.Value));
+        }
     }
 }
