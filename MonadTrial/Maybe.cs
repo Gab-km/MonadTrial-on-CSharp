@@ -16,10 +16,7 @@ namespace MonadTrial
 
         public static Maybe<B> Bind<A, B>(Maybe<A> ma, Func<A, Maybe<B>> amb)
         {
-            if (ma.GetType() == typeof(Nothing<A>))
-                return new Nothing<B>();
-            else
-                return amb(ma.value);
+            return ma.Bind(amb);
         }
 
         public static T FromJust(Maybe<T> ma)
@@ -56,8 +53,6 @@ namespace MonadTrial
 
     public class Nothing<T> : Maybe<T>
     {
-
-
         public override Maybe<B> Bind<B>(Func<T, Maybe<B>> amb)
         {
             return new Nothing<B>();
