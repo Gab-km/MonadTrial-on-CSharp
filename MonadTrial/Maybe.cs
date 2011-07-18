@@ -8,6 +8,7 @@ namespace MonadTrial
     public abstract class Maybe<T>
     {
         internal T value;
+        public abstract T Value { get; }
 
         public static Maybe<A> Return<A>(A a)
         {
@@ -21,10 +22,7 @@ namespace MonadTrial
 
         public static T FromJust(Maybe<T> ma)
         {
-            if (ma.GetType() == typeof(Nothing<T>))
-                throw new NullReferenceException("Nothing has no value.");
-            else
-                return ma.value;
+            return ma.Value;
         }
 
         public abstract Maybe<B> Bind<B>(Func<T, Maybe<B>> amb);
@@ -32,7 +30,7 @@ namespace MonadTrial
 
     public class Just<T> : Maybe<T>
     {
-        public T Value
+        public override T Value
         {
             get
             {
@@ -53,6 +51,14 @@ namespace MonadTrial
 
     public class Nothing<T> : Maybe<T>
     {
+        public override T Value
+        {
+            get
+            {
+                throw new NullReferenceException("Nothing has no value.");
+            }
+        }
+
         public override Maybe<B> Bind<B>(Func<T, Maybe<B>> amb)
         {
             return new Nothing<B>();
