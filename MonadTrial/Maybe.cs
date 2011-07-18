@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MonadTrial
 {
-    public class Maybe<T>
+    public abstract class Maybe<T>
     {
         internal T value;
 
@@ -30,13 +30,7 @@ namespace MonadTrial
                 return ma.value;
         }
 
-        public Maybe<B> Bind<B>(Func<T, Maybe<B>> amb)
-        {
-            if (this.GetType() == typeof(Nothing<T>))
-                return new Nothing<B>();
-            else
-                return amb(this.value);
-        }
+        public abstract Maybe<B> Bind<B>(Func<T, Maybe<B>> amb);
     }
 
     public class Just<T> : Maybe<T>
@@ -53,9 +47,20 @@ namespace MonadTrial
         {
             this.value = a;
         }
+
+        public override Maybe<B> Bind<B>(Func<T, Maybe<B>> amb)
+        {
+            return amb(this.value);
+        }
     }
 
     public class Nothing<T> : Maybe<T>
     {
+
+
+        public override Maybe<B> Bind<B>(Func<T, Maybe<B>> amb)
+        {
+            return new Nothing<B>();
+        }
     }
 }
