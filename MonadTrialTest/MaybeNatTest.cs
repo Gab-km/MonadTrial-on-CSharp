@@ -100,11 +100,20 @@ namespace MonadTrialTest
         }
 
         [Test]
-        public void Just5から価を取り出したら5が返ってくること()
+        public void Just5から値を取り出したら5が返ってくること()
         {
             var just5 = new Just<int>(5);
             Assert.That(just5.Value, Is.EqualTo(5));
             Assert.That(Just<int>.FromJust(just5), Is.EqualTo(5));
+        }
+
+        [Test]
+        public void Nothingから価を取り出そうとするとNullReferenceExceptionが送出されること()
+        {
+            var nothing = new Nothing<int>();
+            var value = 0;
+            Assert.Throws<NullReferenceException>(() => value = nothing.Value);
+            Assert.Throws<NullReferenceException>(() => Maybe<int>.FromJust(nothing));
         }
     }
 }
