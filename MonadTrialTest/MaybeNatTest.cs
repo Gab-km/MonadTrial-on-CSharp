@@ -40,32 +40,32 @@ namespace MonadTrialTest
         }
 
         [Test]
-        public void doMaybeNestの引数に1と2を与えたらJust3が返ってくること()
+        public void doMaybeの引数に1と2を与えたらJust3が返ってくること()
         {
-            var result = MaybeNatSample.doMaybeNest(1, 2);
+            var result = MaybeNatSample.doMaybe(1, 2);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
             Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(3));
         }
 
         [Test]
-        public void doMaybeNestの引数に3と4を与えたらJust7が返ってくること()
+        public void doMaybetの引数に3と4を与えたらJust7が返ってくること()
         {
-            var result = MaybeNatSample.doMaybeNest(3, 4);
+            var result = MaybeNatSample.doMaybe(3, 4);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
             Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(7));
         }
 
         [Test]
-        public void doMaybeNestの引数にminus1と4を与えたらNothingが返ってくること()
+        public void doMaybeの引数にminus1と4を与えたらNothingが返ってくること()
         {
-            var result = MaybeNatSample.doMaybeNest(-1, 4);
+            var result = MaybeNatSample.doMaybe(-1, 4);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
         }
 
         [Test]
-        public void doMaybeNestの引数に5とminus2を与えたらNothingが返ってくること()
+        public void doMaybeの引数に5とminus2を与えたらNothingが返ってくること()
         {
-            var result = MaybeNatSample.doMaybeNest(5, -2);
+            var result = MaybeNatSample.doMaybe(5, -2);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
         }
 
@@ -108,7 +108,7 @@ namespace MonadTrialTest
         }
 
         [Test]
-        public void Nothingから価を取り出そうとするとNullReferenceExceptionが送出されること()
+        public void Nothingから値を取り出そうとするとNullReferenceExceptionが送出されること()
         {
             var nothing = new Nothing<int>();
             var value = 0;
