@@ -68,5 +68,28 @@ namespace MonadTrialTest
             var result = MaybeNatSample.doMaybeNest(5, -2);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
         }
+
+        [Test]
+        public void doMaybeThisの引数に1と2を与えたらJust3が返ってくること()
+        {
+            var result = MaybeNatSample.doMaybeThis(1, 2);
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
+            Assert.That(result.Value, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void doMaybeThisの引数に3と4を与えたらJust7が返ってくること()
+        {
+            var result = MaybeNatSample.doMaybeThis(3, 4);
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
+            Assert.That(result.Value, Is.EqualTo(7));
+        }
+
+        [Test]
+        public void doMaybeThisの引数にminus1と4を与えたらNothingが返ってくること()
+        {
+            var result = MaybeNatSample.doMaybeThis(-1, 4);
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
+        }
     }
 }
