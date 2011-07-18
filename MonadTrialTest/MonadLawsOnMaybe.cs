@@ -27,7 +27,7 @@ namespace MonadTrialTest
             var lefthand = Maybe<int>.Bind(Maybe<int>.Return(1), f);
             var righthand = f(1);
             Assert.That(lefthand.GetType(), Is.EqualTo(righthand.GetType()));
-            Assert.That(lefthand.Value, Is.EqualTo(righthand.Value));
+            Assert.That(Maybe<int>.FromJust(lefthand), Is.EqualTo(Maybe<int>.FromJust(righthand)));
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace MonadTrialTest
             var lefthand = Maybe<int>.Bind(m, Maybe<int>.Return);
             var righthand = m;
             Assert.That(lefthand.GetType(), Is.EqualTo(righthand.GetType()));
-            Assert.That(lefthand.Value, Is.EqualTo(righthand.Value));
+            Assert.That(Maybe<int>.FromJust(lefthand), Is.EqualTo(Maybe<int>.FromJust(righthand)));
         }
 
         [Test]
@@ -93,7 +93,7 @@ namespace MonadTrialTest
             var lefthand = Maybe<int>.Bind(m, (x) => Maybe<int>.Bind(f(x), g));
             var righthand = Maybe<int>.Bind(Maybe<int>.Bind(m, f), g);
             Assert.That(lefthand.GetType(), Is.EqualTo(righthand.GetType()));
-            Assert.That(lefthand.Value, Is.EqualTo(righthand.Value));
+            Assert.That(Maybe<int>.FromJust(lefthand), Is.EqualTo(Maybe<int>.FromJust(righthand)));
         }
 
         [Test]
@@ -115,7 +115,6 @@ namespace MonadTrialTest
             var lefthand = Maybe<int>.Bind(Maybe<int>.Return(value), f);
             var righthand = f(value);
             Assert.That(lefthand.GetType(), Is.EqualTo(righthand.GetType()));
-            Assert.That(lefthand.Value, Is.EqualTo(righthand.Value));
         }
 
         [Test]
@@ -137,7 +136,6 @@ namespace MonadTrialTest
             var lefthand = Maybe<int>.Bind(m, Maybe<int>.Return);
             var righthand = m;
             Assert.That(lefthand.GetType(), Is.EqualTo(righthand.GetType()));
-            Assert.That(lefthand.Value, Is.EqualTo(righthand.Value));
         }
 
         [Test]
@@ -181,7 +179,6 @@ namespace MonadTrialTest
             var lefthand = Maybe<int>.Bind(m, (x) => Maybe<int>.Bind(f(x), g));
             var righthand = Maybe<int>.Bind(Maybe<int>.Bind(m, f), g);
             Assert.That(lefthand.GetType(), Is.EqualTo(righthand.GetType()));
-            Assert.That(lefthand.Value, Is.EqualTo(righthand.Value));
         }
     }
 }

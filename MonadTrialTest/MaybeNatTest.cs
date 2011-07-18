@@ -14,7 +14,7 @@ namespace MonadTrialTest
         {
             var result = MaybeNatSample.tryAdd(1, 2);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
-            Assert.That(result.Value, Is.EqualTo(3));
+            Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(3));
         }
 
         [Test]
@@ -22,7 +22,7 @@ namespace MonadTrialTest
         {
             var result = MaybeNatSample.tryAdd(3, 4);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
-            Assert.That(result.Value, Is.EqualTo(7));
+            Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(7));
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace MonadTrialTest
         {
             var result = MaybeNatSample.doMaybeNest(1, 2);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
-            Assert.That(result.Value, Is.EqualTo(3));
+            Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(3));
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace MonadTrialTest
         {
             var result = MaybeNatSample.doMaybeNest(3, 4);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
-            Assert.That(result.Value, Is.EqualTo(7));
+            Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(7));
         }
 
         [Test]
@@ -74,7 +74,7 @@ namespace MonadTrialTest
         {
             var result = MaybeNatSample.doMaybeThis(1, 2);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
-            Assert.That(result.Value, Is.EqualTo(3));
+            Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(3));
         }
 
         [Test]
@@ -82,7 +82,7 @@ namespace MonadTrialTest
         {
             var result = MaybeNatSample.doMaybeThis(3, 4);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
-            Assert.That(result.Value, Is.EqualTo(7));
+            Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(7));
         }
 
         [Test]
@@ -97,6 +97,14 @@ namespace MonadTrialTest
         {
             var result = MaybeNatSample.doMaybeThis(5, -2);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
+        }
+
+        [Test]
+        public void Just5から価を取り出したら5が返ってくること()
+        {
+            var just5 = new Just<int>(5);
+            Assert.That(just5.Value, Is.EqualTo(5));
+            Assert.That(Just<int>.FromJust(just5), Is.EqualTo(5));
         }
     }
 }
