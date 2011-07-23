@@ -9,7 +9,11 @@ namespace MonadTrial
     {
         public static Maybe<int> tryParse(string a)
         {
-            return new Just<int>((int.Parse(a)));
+            var number = 0;
+            if (int.TryParse(a, out number))
+                return new Just<int>(number);
+            else
+                return new Nothing<int>();
         }
     }
 }

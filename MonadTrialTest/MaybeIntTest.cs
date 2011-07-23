@@ -24,5 +24,12 @@ namespace MonadTrialTest
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
             Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(-1));
         }
+
+        [Test]
+        public void tryParseの引数にAを与えるとNothingが返ってくること()
+        {
+            var result = MaybeIntSample.tryParse("A");
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
+        }
     }
 }
