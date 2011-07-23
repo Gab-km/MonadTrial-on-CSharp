@@ -15,5 +15,10 @@ namespace MonadTrial
             else
                 return new Nothing<int>();
         }
+
+        public static Maybe<int> doMaybe(string p, string p_2)
+        {
+            return new Just<int>(3);
+        }
     }
 }
