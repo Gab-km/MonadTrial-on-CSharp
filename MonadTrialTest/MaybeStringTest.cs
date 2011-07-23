@@ -119,5 +119,12 @@ namespace MonadTrialTest
             var result = MaybeStringSample.doMaybeThis("", "E");
             Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<string>)));
         }
+
+        [Test]
+        public void doMaybeThisの引数にFとnullを与えたらNothingが返ってくること()
+        {
+            var result = MaybeStringSample.doMaybeThis("F", null);
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<string>)));
+        }
     }
 }
