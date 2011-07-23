@@ -112,5 +112,12 @@ namespace MonadTrialTest
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<string>)));
             Assert.That(Maybe<string>.FromJust(result), Is.EqualTo("CD"));
         }
+
+        [Test]
+        public void doMaybeThisの引数にstringEmptyとEを与えたらNothingが返ってくること()
+        {
+            var result = MaybeStringSample.doMaybeThis("", "E");
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<string>)));
+        }
     }
 }
