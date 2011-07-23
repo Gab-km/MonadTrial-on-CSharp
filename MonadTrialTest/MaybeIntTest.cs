@@ -54,5 +54,12 @@ namespace MonadTrialTest
             var result = MaybeIntSample.doMaybe("A", "5");
             Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
         }
+
+        [Test]
+        public void doMaybeの引数に6とBを与えるとNothingが返ってくること()
+        {
+            var result = MaybeIntSample.doMaybe("6", "B");
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
+        }
     }
 }
