@@ -22,5 +22,10 @@ namespace MonadTrial
                     Maybe<int>.Bind(tryParse(b), (y) =>
                         Maybe<int>.Return(x + y)));
         }
+
+        public static Maybe<int> doMaybeThis(string p, string p_2)
+        {
+            return new Just<int>(3);
+        }
     }
 }
