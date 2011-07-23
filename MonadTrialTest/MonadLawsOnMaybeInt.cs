@@ -7,7 +7,7 @@ using MonadTrial;
 
 namespace MonadTrialTest
 {
-    public class MonadLawsOnMaybe
+    public class MonadLawsOnMaybeInt
     {
         [Test]
         public void MaybeIntがMonad則その1を満たすこと()

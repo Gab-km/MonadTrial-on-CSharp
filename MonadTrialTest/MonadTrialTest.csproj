@@ -43,7 +43,8 @@
   <ItemGroup>
     <Compile Include="MaybeNatTest.cs" />
     <Compile Include="MaybeStringTest.cs" />
-    <Compile Include="MonadLawsOnMaybe.cs" />
+    <Compile Include="MonadLawsOnMaybeInt.cs" />
+    <Compile Include="MonadLawsOnMaybeString.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
