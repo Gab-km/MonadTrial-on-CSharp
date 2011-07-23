@@ -16,5 +16,13 @@ namespace MonadTrialTest
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
             Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(1));
         }
+
+        [Test]
+        public void tryParseの引数にminus1を与えるとJustMinus1が返ってくること()
+        {
+            var result = MaybeIntSample.tryParse("-1");
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
+            Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(-1));
+        }
     }
 }

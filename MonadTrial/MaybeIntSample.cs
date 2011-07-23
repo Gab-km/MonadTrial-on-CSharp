@@ -7,9 +7,9 @@ namespace MonadTrial
 {
     public class MaybeIntSample
     {
-        public static Maybe<int> tryParse(string p)
+        public static Maybe<int> tryParse(string a)
         {
-            return new Just<int>(1);
+            return new Just<int>((int.Parse(a)));
         }
     }
 }
