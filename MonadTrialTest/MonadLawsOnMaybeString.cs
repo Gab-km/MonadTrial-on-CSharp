@@ -76,10 +76,21 @@ namespace MonadTrialTest
         public void MaybeString_NothingがMonad則その1を満たすこと()
         {
             // return x >>= f === f x
-            var value = "A";
+            var value = "";
             var lefthand = Maybe<string>.Bind(Maybe<string>.Return(value), f);
             var righthand = f(value);
             Assert.That(lefthand.GetType(), Is.EqualTo(righthand.GetType()));
         }
+
+        [Test]
+        public void MaybeString_NothingがMonad則その2を満たすこと()
+        {
+            // m >>= return === m
+            var m = f(null);
+            var lefthand = Maybe<int>.Bind(m, Maybe<int>.Return);
+            var righthand = m;
+            Assert.That(lefthand.GetType(), Is.EqualTo(righthand.GetType()));
+        }
+
     }
 }
