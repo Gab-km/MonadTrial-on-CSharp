@@ -11,7 +11,7 @@ namespace MonadTrial
         {
             if (string.IsNullOrEmpty(a))
                 return new Nothing<string>();
-            else if (b == "")
+            else if (string.IsNullOrEmpty(b))
                 return new Nothing<string>();
             else
                 return new Just<string>(a + b);
