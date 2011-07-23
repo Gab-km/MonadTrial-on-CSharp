@@ -100,5 +100,12 @@ namespace MonadTrialTest
             var result = MaybeIntSample.doMaybeThis("A", "5");
             Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
         }
+
+        [Test]
+        public void doMaybeThisの引数に6とBを与えるとNothingが返ってくること()
+        {
+            var result = MaybeIntSample.doMaybeThis("6", "B");
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
+        }
     }
 }
