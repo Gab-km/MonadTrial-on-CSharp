@@ -19,7 +19,7 @@ namespace MonadTrial
 
         public static Maybe<string> maybe(string a)
         {
-            if (a == "")
+            if (string.IsNullOrEmpty(a))
                 return new Nothing<string>();
             else
                 return new Just<string>(a);
