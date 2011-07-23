@@ -17,6 +17,22 @@ namespace MonadTrialTest
                 return new Just<string>(x + x.ToLower());
         }
 
+        private Maybe<string> g(string x)
+        {
+            if (string.IsNullOrEmpty(x))
+                return new Nothing<string>();
+            else
+                return new Just<string>(x + x);
+        }
+
+        private Maybe<string> h(string x)
+        {
+            if (string.IsNullOrEmpty(x))
+                return new Nothing<string>();
+            else
+                return new Just<string>(x);
+        }            
+
         [Test]
         public void MaybeStringがMonad則その1を満たすこと()
         {
@@ -43,28 +59,6 @@ namespace MonadTrialTest
         public void MaybeStringがMonad則その3を満たすこと()
         {
             // m >>= (\x -> f x >>= g) === (m >>= f) >>= g
-            Func<string, Maybe<string>> g = (x) =>
-            {
-                if (string.IsNullOrEmpty(x))
-                {
-                    return new Nothing<string>();
-                }
-                else
-                {
-                    return new Just<string>(x + x);
-                }
-            };
-            Func<string, Maybe<string>> h = (x) =>
-            {
-                if (string.IsNullOrEmpty(x))
-                {
-                    return new Nothing<string>();
-                }
-                else
-                {
-                    return new Just<string>(x);
-                }
-            };
             var m = h("A");
             var lefthand = Maybe<string>.Bind(m, (x) => Maybe<string>.Bind(f(x), g));
             var righthand = Maybe<string>.Bind(Maybe<string>.Bind(m, f), g);
@@ -89,6 +83,16 @@ namespace MonadTrialTest
             var m = f(null);
             var lefthand = Maybe<int>.Bind(m, Maybe<int>.Return);
             var righthand = m;
+            Assert.That(lefthand.GetType(), Is.EqualTo(righthand.GetType()));
+        }
+
+        [Test]
+        public void MaybeStringt_NothingがMonad則その3を満たすこと()
+        {
+            // m >>= (\x -> f x >>= g) === (m >>= f) >>= g
+            var m = h("");
+            var lefthand = Maybe<string>.Bind(m, (x) => Maybe<string>.Bind(f(x), g));
+            var righthand = Maybe<string>.Bind(Maybe<string>.Bind(m, f), g);
             Assert.That(lefthand.GetType(), Is.EqualTo(righthand.GetType()));
         }
 
