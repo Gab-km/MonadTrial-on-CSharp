@@ -17,9 +17,9 @@ namespace MonadTrial
                 return new Just<string>(a + b);
         }
 
-        public static Maybe<string> doMaybe(string p, string p_2)
+        public static Maybe<string> doMaybe(string a, string b)
         {
-            return new Just<string>("AB");
+            return new Just<string>(a + b);
         }
     }
 }
