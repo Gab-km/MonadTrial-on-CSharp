@@ -17,9 +17,19 @@ namespace MonadTrial
                 return new Just<string>(a + b);
         }
 
+        public static Maybe<string> maybe(string a)
+        {
+            if (a == "")
+                return new Nothing<string>();
+            else
+                return new Just<string>(a);
+        }
+
         public static Maybe<string> doMaybe(string a, string b)
         {
-            return new Just<string>(a + b);
+            return Maybe<string>.Bind(maybe(a), (x) =>
+                    Maybe<string>.Bind(maybe(b), (y) =>
+                        Maybe<string>.Return(x + y)));
         }
     }
 }
