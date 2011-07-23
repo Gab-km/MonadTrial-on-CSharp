@@ -82,5 +82,27 @@ namespace MonadTrialTest
             var result = MaybeStringSample.doMaybe(null, "F");
             Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<string>)));
         }
+
+        [Test]
+        public void doMaybeの引数にGとstringEmptyを与えたらNothingが返ってくること()
+        {
+            var result = MaybeStringSample.doMaybe("G", "");
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<string>)));
+        }
+
+        [Test]
+        public void doMaybeの引数にHとnullを与えたらNothingが返ってくること()
+        {
+            var result = MaybeStringSample.doMaybe("H", null);
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<string>)));
+        }
+
+        [Test]
+        public void doMaybeThisの引数にAとBを与えたらJustABが返ってくること()
+        {
+            var result = MaybeStringSample.doMaybeThis("A", "B");
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Just<string>)));
+            Assert.That(Maybe<string>.FromJust(result), Is.EqualTo("AB"));
+        }
     }
 }
