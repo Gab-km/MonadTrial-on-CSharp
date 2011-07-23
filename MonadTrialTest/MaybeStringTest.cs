@@ -38,5 +38,12 @@ namespace MonadTrialTest
             var result = MaybeStringSample.tryCat(null, "F");
             Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<string>)));
         }
+
+        [Test]
+        public void tryCatの引数にGとstringEmptyを与えたらNothingが返ってくること()
+        {
+            var result = MaybeStringSample.tryCat("G", "");
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<string>)));
+        }
     }
 }
