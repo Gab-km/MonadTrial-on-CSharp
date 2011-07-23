@@ -32,9 +32,11 @@ namespace MonadTrial
                         Maybe<string>.Return(x + y)));
         }
 
-        public static Maybe<string> doMaybeThis(string p, string p_2)
+        public static Maybe<string> doMaybeThis(string a, string b)
         {
-            return new Just<string>("AB");
+            return maybe(a).Bind((x) =>
+                    maybe(b).Bind((y) =>
+                        Maybe<string>.Return(x + y)));
         }
     }
 }
