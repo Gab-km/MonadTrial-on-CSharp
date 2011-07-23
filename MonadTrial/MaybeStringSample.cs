@@ -9,7 +9,7 @@ namespace MonadTrial
     {
         public static Maybe<string> tryCat(string a, string b)
         {
-            if (a == "")
+            if (string.IsNullOrEmpty(a))
                 return new Nothing<string>();
             else
                 return new Just<string>(a + b);
