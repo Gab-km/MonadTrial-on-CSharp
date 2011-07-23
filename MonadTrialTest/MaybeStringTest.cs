@@ -52,5 +52,13 @@ namespace MonadTrialTest
             var result = MaybeStringSample.tryCat("H", null);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<string>)));
         }
+
+        [Test]
+        public void doMaybeの引数にAとBを与えたらJustABが返ってくること()
+        {
+            var result = MaybeStringSample.doMaybe("A", "B");
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Just<string>)));
+            Assert.That(Maybe<string>.FromJust(result), Is.EqualTo("AB"));
+        }
     }
 }
