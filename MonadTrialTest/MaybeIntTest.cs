@@ -61,5 +61,13 @@ namespace MonadTrialTest
             var result = MaybeIntSample.doMaybe("6", "B");
             Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
         }
+
+        [Test]
+        public void doMaybeの引数にminus1と7を与えるとJust6が返ってくること()
+        {
+            var result = MaybeIntSample.doMaybe("-1", "7");
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
+            Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(6));
+        }
     }
 }
