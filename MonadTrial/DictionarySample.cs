@@ -7,18 +7,20 @@ namespace MonadTrial
 {
     public class DictionarySample
     {
-        public static Maybe<T> tryFind<S, T>(S p, Dictionary<S, T> dict)
+        public static Maybe<T> tryFind<S, T>(S a, Dictionary<S, T> dict)
         {
             T value = default(T);
-            if (dict.TryGetValue(p, out value))
+            if (dict.TryGetValue(a, out value))
                 return new Just<T>(value);
             else
                 return new Nothing<T>();
         }
 
-        public static Maybe<int> doMaybe(Dictionary<string, int> dict, string p, string p_2)
+        public static Maybe<int> doMaybe(Dictionary<string, int> dict, string a, string b)
         {
-            return new Just<int>(3);
+            return Maybe<int>.Bind(tryFind(a, dict), (x) =>
+                    Maybe<int>.Bind(tryFind(b, dict), (y) =>
+                        Maybe<int>.Return(x + y)));
         }
     }
 }
