@@ -73,5 +73,13 @@ namespace MonadTrialTest
             Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
             Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(3));
         }
+
+        [Test]
+        public void doMaybeThisにyとzを与えるとJust5が返ってくること()
+        {
+            var result = DictionarySample.doMaybeThis(dict, "y", "z");
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
+            Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(5));
+        }
     }
 }
