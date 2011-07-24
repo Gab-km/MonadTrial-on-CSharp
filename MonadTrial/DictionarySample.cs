@@ -7,7 +7,7 @@ namespace MonadTrial
 {
     public class DictionarySample
     {
-        public static Maybe<T> tryFind<T>(string p, Dictionary<string, T> dict)
+        public static Maybe<T> tryFind<S, T>(S p, Dictionary<S, T> dict)
         {
             T value = default(T);
             if (dict.TryGetValue(p, out value))
