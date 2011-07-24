@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DictionarySample.cs" />
     <Compile Include="MaybeIntSample.cs" />
     <Compile Include="MaybeNatSample.cs" />
     <Compile Include="Maybe.cs" />

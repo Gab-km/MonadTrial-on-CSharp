@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DictionaryTest.cs" />
     <Compile Include="MaybeIntTest.cs" />
     <Compile Include="MaybeNatTest.cs" />
     <Compile Include="MaybeStringTest.cs" />
