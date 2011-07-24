@@ -36,8 +36,11 @@ namespace MonadTrialTest
             Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(2));
         }
 
-        //[Test]
-        //public void tryFindの引数にwとwをキーに持たないDictionaryを与えたらNothingが返ってくること(){
-
+        [Test]
+        public void tryFindの引数にwとwをキーに持たないDictionaryを与えたらNothingが返ってくること()
+        {
+            var result = DictionarySample.tryFind("w", dict);
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
+        }
     }
 }

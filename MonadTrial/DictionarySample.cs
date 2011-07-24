@@ -9,8 +9,11 @@ namespace MonadTrial
     {
         public static Maybe<T> tryFind<T>(string p, Dictionary<string, T> dict)
         {
-            var value = dict[p];
-            return new Just<T>(value);
+            T value = default(T);
+            if (dict.TryGetValue(p, out value))
+                return new Just<T>(value);
+            else
+                return new Nothing<T>();
         }
     }
 }
