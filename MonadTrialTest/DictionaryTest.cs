@@ -42,5 +42,13 @@ namespace MonadTrialTest
             var result = DictionarySample.tryFind("w", dict);
             Assert.That(result.GetType(), Is.EqualTo(typeof(Nothing<int>)));
         }
+
+        [Test]
+        public void doMaybeにxとyを与えるとJust3が返ってくること()
+        {
+            var result = DictionarySample.doMaybe(dict, "x", "y");
+            Assert.That(result.GetType(), Is.EqualTo(typeof(Just<int>)));
+            Assert.That(Maybe<int>.FromJust(result), Is.EqualTo(3));
+        }
     }
 }
