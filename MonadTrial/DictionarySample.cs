@@ -22,5 +22,10 @@ namespace MonadTrial
                     Maybe<int>.Bind(tryFind(b, dict), (y) =>
                         Maybe<int>.Return(x + y)));
         }
+
+        public static Maybe<int> doMaybeThis(Dictionary<string, int> dict, string p, string p_2)
+        {
+            return new Just<int>(3);
+        }
     }
 }
